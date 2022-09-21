@@ -20,9 +20,7 @@ public class CarDaoImp implements CarDao {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Car> listCar() {
-        TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car");
-        return query.getResultList();
+        return sessionFactory.getCurrentSession().createQuery("select c from Car c", Car.class).getResultList();
     }
 }
